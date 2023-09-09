@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gcu</groupId>
-	<artifactId>SpringApplication</artifactId>
+	<artifactId>CST-323-Activity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringApplication</name>
 	<description>first activity</description>
