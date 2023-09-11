@@ -4,12 +4,12 @@
 name: Build and deploy JAR app to Azure Web App - CST323-Application
 
 env:
-  Azure_Password: ${{secrets.Azure_Password}}
-  Azure_Username: ${{secrets.Azure_Username}}
-  AzureDB_URL: ${{secrets.AzureDB_URL}}
-  OpenAI_Key: ${{secrets.OpenAI_Key}}
-  OpenAI_Model: ${{secrets.OpenAI_Model}}
-  OpenAI_URL: ${{secrets.OpenAI_URL}}
+  Azure_Password: ${{secrets.AZURE_PASSWORD}}
+  Azure_Username: ${{secrets.AZURE_USERNAME}}
+  AzureDB_URL: ${{secrets.AZUREDB_URL}}
+  OpenAI_Key: ${{secrets.OPENAI_KEY}}
+  OpenAI_Model: ${{secrets.OPENAI_MODEL}}
+  OpenAI_URL: ${{secrets.OPENAI_URL}}
 
 on:
   push:
