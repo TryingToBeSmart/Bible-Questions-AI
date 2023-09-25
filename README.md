@@ -14,4 +14,4 @@ Added OpenAI API to send requests and return responses using the /chat page.  Th
 I want to train it to use Biblical evidence to reply; for example: "According to 2 Timothy 3:16-17, all scripture is breathed out by God.  The Bible was written by over 40 different writers over the course of over 1500 years, yet the messages are unified about God's character and plans for his creation.  This is evidence that the Bible truly is God's word."  Or something like that.  It will be a fun project if I have time.
 
 ## Milestone 4 9/24/23
-Added support for AWS Elastic Beanstalk hosting.
+Added support for AWS Elastic Beanstalk and also Google Cloud hosting.
