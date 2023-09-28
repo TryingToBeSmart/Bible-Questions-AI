@@ -6,6 +6,7 @@ import java.util.List;
 //Thanks https://www.baeldung.com/spring-boot-chatgpt-api-openai
 public class ChatRequest {
 
+	String systemMessage = AiTraining.SYSTEM_MESSAGE;//get training message from doc
 	private String model;
 	private List<Message> messages;
 	private int n = 1;
@@ -17,7 +18,8 @@ public class ChatRequest {
 		this.model = model;
 
 		this.messages = new ArrayList<>();
-		this.messages.add(new Message("user", prompt));
+		this.messages.add(new Message("system", systemMessage));//add AI training message
+		this.messages.add(new Message("user", prompt));//add user's question
 	}
 
 	public ChatRequest(String model, List<Message> messages, int n, double temperature) {
