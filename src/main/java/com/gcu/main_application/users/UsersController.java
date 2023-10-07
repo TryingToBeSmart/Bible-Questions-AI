@@ -3,6 +3,8 @@ package com.gcu.main_application.users;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class UsersController {
+	//logger
+	private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
 
 	/** The users repository interface. */
 	@Autowired UsersRepositoryInterface usersRepositoryInterface;
@@ -29,7 +33,9 @@ public class UsersController {
 	@GetMapping("/signup")
 	public String signup(Model model) 
 	{
+		logger.info("signup started");
 		model.addAttribute("userInfo", new UsersModel());
+		logger.info("signup ending");
 		return "signup";
 	}
 	
@@ -42,12 +48,14 @@ public class UsersController {
 	 */
 	@PostMapping("/signup")
     public String createUser(@ModelAttribute UsersModel userInfo, Model model) {
+		logger.info("createUser started");
 
         // Save the new user to the database
         usersRepositoryInterface.save(userInfo);
 
         // Send user to the form to be displayed
         model.addAttribute("userInfo", userInfo);
+		logger.info("createUser ending");
 
         return "signup"; // Redirect back to the signup page
     }
@@ -61,8 +69,10 @@ public class UsersController {
 	@GetMapping("/userslist")
 	public String listAllUsers(Model model) 
 	{
+		logger.info("listAllUsers starting");
 		List<UsersModel> userList = (List<UsersModel>) usersRepositoryInterface.findAll();
 		model.addAttribute("userList", userList);
+		logger.info("listAllUsers ending");
 		return "userslist";
 	}
 	
@@ -75,11 +85,13 @@ public class UsersController {
 	 */
 	@GetMapping("/edituser/{id}")
 	public String showEditForm(@PathVariable int id, Model model) {
+		logger.info("showEditForm starting");
 	    // Retrieve the user from the database based on the ID
 	    Optional<UsersModel> userOptional = usersRepositoryInterface.findById(id);
 
         UsersModel user = userOptional.get();
         model.addAttribute("user", user);
+		logger.info("showEditForm ending");
         return "edituser"; 
 	}
 
@@ -92,6 +104,7 @@ public class UsersController {
 	 */
 	@PostMapping("/edituser/{id}")
 	public String processEditForm(@PathVariable int id, @ModelAttribute UsersModel updatedUser) {
+		logger.info("processEditForm starting");
 	    // Retrieve the user from the database based on the ID
 	    Optional<UsersModel> userOptional = usersRepositoryInterface.findById(id);
 
@@ -103,6 +116,7 @@ public class UsersController {
 
         // Save the updated user to the database
         usersRepositoryInterface.save(user);
+		logger.info("processEditForm ending");
 
         return "redirect:/userslist"; // Redirect back to the user list page
 	}
@@ -115,7 +129,9 @@ public class UsersController {
 	 */
 	@GetMapping("/deleteuser/{id}")
 	public String deleteUser(@PathVariable int id) {
+		logger.info("deleteUser starting");
 		usersRepositoryInterface.deleteById(id);
+		logger.info("deleteUser ending");
 		
 		return "redirect:/userslist"; // Redirect back to the user list page
 	}

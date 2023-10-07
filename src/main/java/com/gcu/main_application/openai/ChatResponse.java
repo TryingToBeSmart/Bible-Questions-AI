@@ -2,12 +2,18 @@ package com.gcu.main_application.openai;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The Class ChatResponse.
  */
 //Thanks https://www.baeldung.com/spring-boot-chatgpt-api-openai
 public class ChatResponse {
 
+	//logger
+	private static final Logger logger = LoggerFactory.getLogger(ChatResponse.class);
+	
 	/** The choices. */
 	private List<Choice> choices;
 
@@ -15,6 +21,7 @@ public class ChatResponse {
 	 * Instantiates a new chat response.
 	 */
 	public ChatResponse() {
+		logger.info("New blank ChatResponse constructed");
 	}
 
 	/**
@@ -25,6 +32,7 @@ public class ChatResponse {
 	public ChatResponse(List<Choice> choices) {
 		super();
 		this.choices = choices;
+		logger.info("New ChatResponse with choices constructed");
 	}
 
 	/**
@@ -33,6 +41,7 @@ public class ChatResponse {
 	 * @return the choices
 	 */
 	public List<Choice> getChoices() {
+		logger.info("getChoices");
 		return choices;
 	}
 
@@ -43,12 +52,15 @@ public class ChatResponse {
 	 */
 	public void setChoices(List<Choice> choices) {
 		this.choices = choices;
+		logger.info("setChoices");
 	}
 
 	/**
 	 * The Class Choice.
 	 */
 	public static class Choice {
+		//logger
+		private static final Logger logger = LoggerFactory.getLogger(Choice.class);
 
 		/** The index. */
 		private int index;
@@ -60,6 +72,7 @@ public class ChatResponse {
 		 * Instantiates a new choice.
 		 */
 		public Choice() {
+			logger.info("New blank Choice constructed");
 		}
 
 		/**
@@ -72,6 +85,7 @@ public class ChatResponse {
 			super();
 			this.index = index;
 			this.message = message;
+			logger.info("New Choice with index/message constructed");
 		}
 
 		/**
@@ -80,6 +94,7 @@ public class ChatResponse {
 		 * @return the index
 		 */
 		public int getIndex() {
+			logger.info("getIndex");
 			return index;
 		}
 
@@ -90,6 +105,7 @@ public class ChatResponse {
 		 */
 		public void setIndex(int index) {
 			this.index = index;
+			logger.info("setIndex");
 		}
 
 		/**
@@ -98,6 +114,7 @@ public class ChatResponse {
 		 * @return the message
 		 */
 		public Message getMessage() {
+			logger.info("getMessage");
 			return message;
 		}
 
@@ -108,6 +125,7 @@ public class ChatResponse {
 		 */
 		public void setMessage(Message message) {
 			this.message = message;
+			logger.info("setMessage");
 		}
 
 	}

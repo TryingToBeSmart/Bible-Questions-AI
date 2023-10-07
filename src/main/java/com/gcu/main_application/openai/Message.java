@@ -1,10 +1,15 @@
 package com.gcu.main_application.openai;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The Class Message.
  */
 //Thanks https://www.baeldung.com/spring-boot-chatgpt-api-openai
 public class Message {
+	//logger
+	private static final Logger logger = LoggerFactory.getLogger(Message.class);
 
 	/** The role. */
 	private String role;
@@ -15,7 +20,9 @@ public class Message {
 	/**
 	 * Instantiates a new message.
 	 */
-	public Message() {	}
+	public Message() {
+		logger.info("New blank Message constructed");
+	}
 	
 	/**
 	 * Instantiates a new message.
@@ -27,6 +34,7 @@ public class Message {
 		super();
 		this.role = role;
 		this.content = content;
+		logger.info("New Message with role/content constructed");
 	}
 
 	/**
@@ -35,6 +43,7 @@ public class Message {
 	 * @return the role
 	 */
 	public String getRole() {
+		logger.info("getRole");
 		return role;
 	}
 
@@ -45,6 +54,7 @@ public class Message {
 	 */
 	public void setRole(String role) {
 		this.role = role;
+		logger.info("setRole");
 	}
 
 	/**
@@ -53,6 +63,7 @@ public class Message {
 	 * @return the content
 	 */
 	public String getContent() {
+		logger.info("getContent");
 		return content;
 	}
 
@@ -63,6 +74,7 @@ public class Message {
 	 */
 	public void setContent(String content) {
 		this.content = content;
+		logger.info("setContent");
 	}
 
 }
