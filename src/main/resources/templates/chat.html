@@ -11,14 +11,20 @@ object using Thymeleaf and displays the response information in a div using Java
 	<div layout:fragment="content">
 		<h1>AI Chatbot</h1>
 		
-		<form action="/chat" th:action="@{/chat}" th:object="${chatRequest}" method="post">
+		<form action="/chat" th:action="@{/chat}" th:object="${chatRequest}" method="post" onsubmit="return onSubmitForm(this);">
 			<table>
 				<tr>
 					<td>Question:</td>
 					<td><input type="text" th:field="*{messages}" id="question" name="messages"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Submit"/></td>
+					<td>
+					<!-- Submit button -->
+						<button type="submit" class="btn btn-primary" id="submitButton">
+                    		<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span><!-- spinner when awaiting response -->
+		                    Submit
+		                </button>
+					</td>
 				</tr>
 			</table>
 		</form>
@@ -30,7 +36,12 @@ object using Thymeleaf and displays the response information in a div using Java
 	
 		<script th:inline="javascript">
 		    var chatResponse = /*[[${chatResponse}]]*/ null; // Get the user info from Thymeleaf
-		    // Check if user info is available and form has been submitted
+		    var submitButton = document.getElementById("submitButton");
+		    var spinner = document.querySelector(".spinner-border");
+		    var questionInput = document.getElementById("question");
+		    var formSubmitting = false; //for disabling button while waiting for response
+		    
+		    // If there is chat response, then fill result container with response
 		    if (chatResponse != null) {
 		        var resultContainer = document.getElementById("resultContainer");
 		        
@@ -47,6 +58,39 @@ object using Thymeleaf and displays the response information in a div using Java
 		        // Append result content to the result container
 		        resultContainer.appendChild(resultContent);
 		    }
+		    
+		    // check if awaiting response before submitting form
+		    function onSubmitForm(form) {
+		    	if (formSubmitting) {
+		    		return false; //don't submit form if already waiting for a response
+		    	}
+		    	//disable submit button and show spinner
+		    	submitButton.disabled = true;
+    			spinner.style.display = "inline-block";
+		    	
+		    	formSubmitting = true; //set to true when submitting
+		    	return true;
+		    }
+		    
+		    // Function to enable or disable the submit button
+		    function updateSubmitButtonState() {
+		    	// Check if form is submitting and waiting for response
+		    	if (formSubmitting) {
+		    		submitButton.disabled = true;
+		    	}
+		    	// Check if input is empty or whitespace
+		    	else if (questionInput.value.trim() === "") {
+		            submitButton.disabled = true; // Disable the button
+		        } else {
+		            submitButton.disabled = false; // Enable the button
+		        }
+		    }
+
+		    // Listen for input in the question field
+		    questionInput.addEventListener("input", updateSubmitButtonState);
+
+		    updateSubmitButtonState(); // Initially check the state
+		    
 		    function clearFormAndResult() {
 		        // Clear the form fields (assuming they have IDs)
 		        document.getElementById("question").value = "";

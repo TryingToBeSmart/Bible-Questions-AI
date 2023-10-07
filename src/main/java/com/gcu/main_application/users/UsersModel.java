@@ -1,5 +1,7 @@
 package com.gcu.main_application.users;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -13,6 +15,8 @@ import jakarta.persistence.GenerationType;
 //create userInfo objects that can be displayed and updated using getters and setters
 @Table("users")
 public class UsersModel {
+	//logger
+	private static final Logger logger = LoggerFactory.getLogger(UsersModel.class);
 	
 	/** The id users. */
 	@Id
@@ -34,7 +38,9 @@ public class UsersModel {
 	/**
 	 * Instantiates a new users model.
 	 */
-	public UsersModel() {}
+	public UsersModel() {
+		logger.info("New blank UsersModel constructed");
+	}
 	
 	/**
 	 * Instantiates a new users model.
@@ -49,6 +55,7 @@ public class UsersModel {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+		logger.info("New UsersModel idUser/firstName/lastName/password constructed");
 	}
 	
 	/**
@@ -57,6 +64,7 @@ public class UsersModel {
 	 * @return the id user
 	 */
 	public int getIdUser() {
+		logger.info("getIdUser");
 		return idUsers;
 	}
 	
@@ -67,6 +75,7 @@ public class UsersModel {
 	 */
 	public void setIdUser(int id) {
 		this.idUsers = id;
+		logger.info("setIdUser");
 	}
 	
 	/**
@@ -75,6 +84,7 @@ public class UsersModel {
 	 * @return the first name
 	 */
 	public String getFirstName() {
+		logger.info("getFirstName");
 		return firstName;
 	}
 	
@@ -85,6 +95,7 @@ public class UsersModel {
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+		logger.info("setFirstName");
 	}
 	
 	/**
@@ -93,6 +104,7 @@ public class UsersModel {
 	 * @return the last name
 	 */
 	public String getLastName() {
+		logger.info("getLastName");
 		return lastName;
 	}
 	
@@ -103,6 +115,7 @@ public class UsersModel {
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+		logger.info("setLastName");
 	}
 	
 	/**
@@ -111,6 +124,7 @@ public class UsersModel {
 	 * @return the password
 	 */
 	public String getPassword() {
+		logger.info("getPassword");
 		return password;
 	}
 	
@@ -121,6 +135,7 @@ public class UsersModel {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+		logger.info("setPassword");
 	}
 	
 	//Don't want to print the password in a final implementation, but it's here for now
@@ -131,6 +146,7 @@ public class UsersModel {
 	 */
 	@Override
 	public String toString() {
+		logger.info("toString");
 		return "Id: " + idUsers +
 				"First Name: " + firstName +
 				"Last Name: " + lastName +
