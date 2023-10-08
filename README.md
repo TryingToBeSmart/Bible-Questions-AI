@@ -15,3 +15,6 @@ I want to train it to use Biblical evidence to reply; for example: "According to
 
 ## Milestone 4 9/24/23
 Added support for AWS Elastic Beanstalk and also Google Cloud hosting.
+
+## Milestone 6 10/8/23
+Added Build pipeline for Google Cloud
