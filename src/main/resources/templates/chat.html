@@ -9,24 +9,17 @@
 <!-- This page provides content for the chat page.  It includes forms to create an
 object using Thymeleaf and displays the response information in a div using Javascript -->
 	<div layout:fragment="content">
-		<h1>AI Chatbot</h1>
+		<h1 class="text-center">AI Chatbot</h1>
 		
 		<form action="/chat" th:action="@{/chat}" th:object="${chatRequest}" method="post" onsubmit="return onSubmitForm(this);">
-			<table>
-				<tr>
-					<td>Question:</td>
-					<td><input type="text" th:field="*{messages}" id="question" name="messages"></td>
-				</tr>
-				<tr>
-					<td>
-					<!-- Submit button -->
-						<button type="submit" class="btn btn-primary" id="submitButton">
-                    		<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span><!-- spinner when awaiting response -->
-		                    Submit
-		                </button>
-					</td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label>Question:</label>
+				<input type="text" th:field="*{messages}" id="question" name="messages" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-primary" id="submitButton">
+                  		<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span><!-- spinner when awaiting response -->
+                    Submit
+               </button>
 		</form>
 		
 		<!-- Provide the result in a container when it is generated-->
