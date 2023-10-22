@@ -7,70 +7,64 @@
 <body>
     <!-- This page provides content for the edituser page. It includes forms to edit a user using Thymeleaf -->
     <div layout:fragment="content">
-        <h1 class="text-center">Edit User</h1>
-
-        <div class="mx-auto" style="width: 400px;">
-		    <div class="row justify-content-center">
-		        <div class="col-4">
-		            <strong>ID:</strong>
-		        </div>
-		        <div class="col-8">
-		            <span th:text="${user.idUser}"></span>
-		        </div>
-		    </div>
+        
+		<h1 class="text-center">Edit User</h1>
 		
-		    <div class="row justify-content-center">
-		        <div class="col-4">
-		            <strong>First Name:</strong>
-		        </div>
-		        <div class="col-8">
-		            <span th:text="${user.firstName}"></span>
-		        </div>
-		    </div>
-		
-		    <div class="row justify-content-center">
-		        <div class="col-4">
-		            <strong>Last Name:</strong>
-		        </div>
-		        <div class="col-8">
-		            <span th:text="${user.lastName}"></span>
-		        </div>
-		    </div>
-		
-		    <div class="row justify-content-center">
-		        <div class="col-4">
-		            <strong>Password:</strong>
-		        </div>
-		        <div class="col-8">
-		            <span th:text="${user.password}"></span>
-		        </div>
-		    </div>
+		<div class="container">
+			<div class="mx-auto" style="width: 400px;">
+				<table class="table">
+				    <tr>
+				        <td class="text-center"><strong>ID</strong></td>
+				        <td class="text-center"><strong>First Name</strong></td>
+				        <td class="text-center"><strong>Last Name</strong></td>
+				        <td class="text-center"><strong>Password</strong></td>
+				    </tr>
+				    <tr>
+				        <td class="text-center"><span th:text="${user.idUser}"></span></td>
+				        <td class="text-center"><span th:text="${user.firstName}"></span></td>
+				        <td class="text-center"><span th:text="${user.lastName}"></span></td>
+				        <td class="text-center"><span th:text="${user.password}"></span></td>
+				    </tr>
+				</table>
+			</div>
 		</div>
-
 		
-		<div class="mx-auto" style="width: 500px;">
-            <form action="#" th:action="@{/edituser/{id}(id=${user.idUser})}" th:object="${user}" method="post">
-                <div class="form-group">
-                    <label>First Name:</label>
-                    <input type="text" th:field="*{firstName}" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Last Name:</label>
-                    <input type="text" th:field="*{lastName}" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password:</label>
-                    <input type="text" th:field="*{password}" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a th:href="@{/deleteuser/{id} (id=${user.idUser})}" th:object="${user}">
-                    <button type="button" class="btn btn-danger">Delete User</button>
-                </a>
-                <a th:href="@{/userslist}">
-                    <button type="button" class="btn btn-secondary">Cancel</button>
-                </a>
-            </form>
-        </div>
-    </div>
+			<div class="mx-auto" style="width: 500px;">
+				<form action="#" th:action="@{/edituser/{id}(id=${user.idUser})}" th:object="${user}" method="post">
+				    <div class="form-group">
+				        <label>First Name:</label>
+				        <input type="text" th:field="*{firstName}" class="form-control">
+				    </div>
+				    <div class="form-group">
+				        <label>Last Name:</label>
+				        <input type="text" th:field="*{lastName}" class="form-control">
+				    </div>
+				    <div class="form-group">
+				        <label>Password:</label>
+				        <input type="text" th:field="*{password}" class="form-control">
+				    </div>
+				    
+				    <div class="container">
+				    	<div class="row justify-content-center text-center">
+						    <div class="col">
+						    	 <button type="submit" class="btn btn-primary">Save Changes</button>
+						    </div>
+						   	<div class="col">
+							   	<a th:href="@{/deleteuser/{id} (id=${user.idUser})}" th:object="${user}">
+							        <button type="button" class="btn btn-danger">Delete User</button>
+							    </a>
+							</div>
+							<div class="col">
+							    <a th:href="@{/userslist}">
+							        <button type="button" class="btn btn-secondary">Cancel</button>
+							    </a>
+						    </div>
+				    	</div>
+				    </div>
+				    
+				</form>
+			</div>
+			
+		</div>
 </body>
 </html>
