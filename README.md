@@ -18,3 +18,6 @@ Added support for AWS Elastic Beanstalk and also Google Cloud hosting.
 
 ## Milestone 6 10/8/23
 Added Build pipeline for Google Cloud
+
+## Milestone 7 10/15/23
+Added AI Training and UI updates.  It is now a biblical evangelist bot.
