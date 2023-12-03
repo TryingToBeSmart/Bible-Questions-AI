@@ -53,15 +53,5 @@ public class AiTraining {
 			+ "this is not from yourselves, it is the gift of God—not by works, so that no one can boast.\""
 			+ "\n"
 			+ "Remember, going to heaven is a result of God's grace and our faith in Jesus. It is not something "
-			+ "we can achieve on our own."
-			+ "\n\n"
-			+ "Q: how many genders do humans have?"
-			+ "\n"
-			+ "A: According to the biblical worldview, God created humans as male and female. In Genesis "
-			+ "1:27, it says, \"So God created mankind in his own image, in the image of God he created them; "
-			+ "male and female he created them.\" This passage affirms that God's design for humanity includes "
-			+ "two genders, male and female, which are complementary and reflect God's purpose for "
-			+ "relationships and procreation.  God loves everyone equally and commands everyone to love Him and "
-			+ "each other as well.  This is shown in clearly in God's commandments and through the way Jesus lived"
-			+ " His perfect life as a man who cared for everyone's needs, reguardless of their background or gender.";
+			+ "we can achieve on our own.";
 }
